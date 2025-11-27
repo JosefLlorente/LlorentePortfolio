@@ -20,6 +20,10 @@ body.dark-theme {
     --card-bg: #1a1a1a;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .box {
     display: flex;
     flex-direction: column;
@@ -31,13 +35,13 @@ body.dark-theme {
     border-radius: 15px;
     background-color: #f5f5f5;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.08);
+    scroll-margin-top: 100px;
 }
 
 body.dark-theme .box {
     background-color: #1e1e1e;
     box-shadow: 2px 2px 10px rgba(255,255,255,0.05);
 }
-
 
 p, h1, h2, h3, h4, h5, h6, .course, .description, .project-description {
     color: var(--text-color);
@@ -50,18 +54,13 @@ p, h1, h2, h3, h4, h5, h6, .course, .description, .project-description {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.project-card {
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    text-align: center;
-}
-
 .taskbar {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .taskbar ul {
@@ -71,6 +70,7 @@ p, h1, h2, h3, h4, h5, h6, .course, .description, .project-description {
     padding: 0;
     gap: 30px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .taskbar .logo {
@@ -111,11 +111,13 @@ a {
 .name {
     margin-top: 30px;
     margin-bottom: 3px;
+    text-align: center;
 }
 
 .course {
     font-size: 20px;
     color: var(--text-color);
+    text-align: center;
 }
 
 .description {
@@ -133,6 +135,7 @@ h3 {
 
 .section-title {
     margin-top: 50px;
+    text-align: center;
 }
 
 .achievements {
@@ -141,6 +144,7 @@ h3 {
     margin-top: 20px;
     flex-wrap: wrap;
     background: transparent;
+    gap: 10px;
 }
 
 .achievement-title {
@@ -167,6 +171,7 @@ h3 {
     width: 100%;
     text-align: center;
     background: transparent;
+    border-radius: 10px;
 }
 
 .project-title {
@@ -182,7 +187,7 @@ h3 {
 
 .skills {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 40px;
     justify-items: center;
     margin-top: 20px;
@@ -198,6 +203,7 @@ h3 {
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .social-icon i {
@@ -213,6 +219,123 @@ body.dark-theme .theme-toggle i {
     color: #555;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (max-width: 768px) {
+    .taskbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .taskbar .logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .taskbar ul {
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .taskbar li.menu {
+        margin-left: 0;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .box {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+
+    .course {
+        font-size: 18px;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 180%;
+    }
+
+    .section-title {
+        margin-top: 30px;
+        font-size: 1.5rem;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .skills {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 20px;
+        font-size: 40px;
+    }
+
+    .socials {
+        gap: 40px;
+    }
+
+    .social-icon i {
+        font-size: 35px;
+    }
+
+    .achievement-title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .taskbar ul {
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .name {
+        font-size: 1.3rem;
+    }
+
+    .course {
+        font-size: 16px;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .skills {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        font-size: 35px;
+    }
+
+    .socials {
+        gap: 30px;
+    }
+
+    .social-icon i {
+        font-size: 30px;
+    }
+
+    .box {
+        padding: 15px;
+    }
 }

@@ -167,11 +167,19 @@ h3 {
 }
 
 .project-card {
-    padding: 20px;
-    width: 100%;
-    text-align: center;
-    background: transparent;
-    border-radius: 10px;
+    display: block;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.3s, background-color 0.3s;
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+.project-card:hover {
+    border-color: rgb(74, 66, 122) !important;
 }
 
 .project-title {
@@ -179,6 +187,7 @@ h3 {
     font-weight: 600;
     margin-bottom: 10px;
 }
+
 
 .project-description {
     font-size: 0.95rem;

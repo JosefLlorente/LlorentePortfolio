@@ -7,6 +7,35 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="src/style.css">
   <title>Josef Llorente — Portfolio</title>
+  <style>
+    /* PDF thumbnail styling — move into src/style.css if you prefer */
+    .cert-preview {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cert-preview-bg, #1c1c1c);
+    }
+    .cert-preview canvas.cert-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cert-preview.loading::after {
+      content: "";
+      width: 28px;
+      height: 28px;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      border-top-color: rgba(255, 255, 255, 0.85);
+      border-radius: 50%;
+      animation: cert-spin 0.8s linear infinite;
+    }
+    @keyframes cert-spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 
 <body class="body">
@@ -65,6 +94,18 @@
             <img src="assets/archivum/dashboard.png" alt="Archivum coordinator dashboard" class="screenshot-img" loading="lazy">
             <figcaption>Dashboard</figcaption>
           </figure>
+          <figure class="screenshot-item">
+            <img src="assets/archivum/defense.jpg" alt="Archivum coordinator defense" class="screenshot-img" loading="lazy">
+            <figcaption>Defense</figcaption>
+          </figure>
+          <figure class="screenshot-item">
+            <img src="assets/archivum/meeting.jpg" alt="Archivum coordinator meeting" class="screenshot-img" loading="lazy">
+            <figcaption>Meeting</figcaption>
+          </figure>
+          <figure class="screenshot-item">
+            <img src="assets/archivum/project.jpg" alt="Archivum coordinator project" class="screenshot-img" loading="lazy">
+            <figcaption>Project</figcaption>
+          </figure>
         </div>
       </article>
     </section>
@@ -100,7 +141,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Coursera Certificate</p>
+              <p class="cert-name">Input and Interaction</p>
               <span class="cert-tag">View PDF</span>
             </div>
           </a>
@@ -110,7 +151,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Coursera Certificate</p>
+              <p class="cert-name">Introduction to User Experience Design</p>
               <span class="cert-tag">View PDF</span>
             </div>
           </a>
@@ -126,7 +167,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Computer Programming Concepts 1</p>
+              <p class="cert-name">C++ Programming</p>
               <span class="cert-tag">IT101</span>
             </div>
           </a>
@@ -136,7 +177,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Computer Programming Concepts 2</p>
+              <p class="cert-name">Java Programming 2</p>
               <span class="cert-tag">IT101-2L</span>
             </div>
           </a>
@@ -146,7 +187,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Workshop Certificate</p>
+              <p class="cert-name">Basic Web Development</p>
               <span class="cert-tag">View PDF</span>
             </div>
           </a>
@@ -156,7 +197,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Seminar Certificate</p>
+              <p class="cert-name">Codechum Participation</p>
               <span class="cert-tag">View PDF</span>
             </div>
           </a>
@@ -166,7 +207,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Seminar Certificate</p>
+              <p class="cert-name">Codechum 2nd Place</p>
               <span class="cert-tag">View PDF</span>
             </div>
           </a>
@@ -176,7 +217,7 @@
               <span>Certificate preview</span>
             </div>
             <div class="cert-info">
-              <p class="cert-name">Seminar Certificate</p>
+              <p class="cert-name">Codechum Grand Finals Participation</p>
               <span class="cert-tag">View PDF</span>
             </div>
           </a>
@@ -261,5 +302,84 @@
   </main>
 
   <script type="module" src="/src/script.js"></script>
+
+  <!-- PDF.js: renders page 1 of each certificate as a canvas thumbnail -->
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+  <script>
+    (function () {
+      if (typeof pdfjsLib === "undefined") {
+        console.error(
+          "PDF.js failed to load from CDN — certificate thumbnails will fall back to the file icon. Check your network/ad-blocker, or the script tag URL."
+        );
+        return;
+      }
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+
+      // Render thumbnails only once each card scrolls into view.
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            renderThumbnail(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "200px" });
+
+      document.querySelectorAll(".cert-card").forEach((card) => observer.observe(card));
+
+      async function renderThumbnail(card) {
+        const rawUrl = card.getAttribute("href");
+        const preview = card.querySelector(".cert-preview");
+        if (!rawUrl || !preview) return;
+
+        // Encode spaces/parentheses etc. so filenames like
+        // "Coursera ICU8ZRRGMZ9I.pdf" or "LlorenteJosef(1).pdf" resolve correctly.
+        const url = encodeURI(rawUrl);
+
+        preview.classList.add("loading");
+
+        try {
+          if (location.protocol === "file:") {
+            throw new Error(
+              "Page is opened via file:// — PDF.js cannot fetch local PDFs this way. Serve the folder over http:// (e.g. `npx serve` or a Live Server extension)."
+            );
+          }
+
+          const pdf = await pdfjsLib.getDocument(url).promise;
+          const page = await pdf.getPage(1);
+
+          // Scale the render to match the box's current display width
+          // (capped, then upscaled for device pixel ratio for crispness).
+          const baseViewport = page.getViewport({ scale: 1 });
+          const targetWidth = preview.clientWidth || 240;
+          const dpr = window.devicePixelRatio || 1;
+          const scale = (targetWidth / baseViewport.width) * dpr;
+          const viewport = page.getViewport({ scale });
+
+          const canvas = document.createElement("canvas");
+          canvas.className = "cert-thumb";
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          const ctx = canvas.getContext("2d");
+
+          await page.render({ canvasContext: ctx, viewport }).promise;
+
+          preview.classList.remove("placeholder", "loading");
+          preview.innerHTML = "";
+          preview.appendChild(canvas);
+        } catch (err) {
+          console.warn("Could not render thumbnail for", url, err);
+          preview.classList.remove("loading");
+          const span = preview.querySelector("span");
+          if (span) {
+            span.textContent = "Preview unavailable";
+            span.title = err.message;
+          }
+        }
+      }
+    })();
+  </script>
 </body>
 </html>

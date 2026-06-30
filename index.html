@@ -6,120 +6,260 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="src/style.css">
-  <title>Llorente</title>
+  <title>Josef Llorente — Portfolio</title>
 </head>
 
 <body class="body">
-  <div class="taskbar">
+  <nav class="taskbar">
     <div class="logo">JL</div>
     <ul>
       <li class="menu"><a href="#about">About</a></li>
-      <li class="menu"><a href="#achievements">Achievements</a></li>
+      <li class="menu"><a href="#final-project">Final Project</a></li>
+      <li class="menu"><a href="#certificates">Certificates</a></li>
       <li class="menu"><a href="#projects">Projects</a></li>
       <li class="menu"><a href="#skills">Skills</a></li>
       <li class="menu"><a href="#socials">Socials</a></li>
     </ul>
-    <button class="theme-toggle"><i class="fas fa-moon"></i></button>
-  </div>
+    <button class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  </nav>
 
-  <img src="assets/josef.jpg" class="profile-pic">
-
-  <div class="box" id="about">
-    <h1 class="name">Josef Dave R. Llorente</h1>
-    <p class="course">Computer Science • 2nd Year</p>
-    <p class="description">
-      I am a second-year student at Mapúa Malayan Colleges Mindanao, with experience in app and web development. 
-      My main passion lies in finance, and my ultimate goal is to become an independent quantitative finance professional. 
-      I aim to use my technical and financial knowledge not only to analyze markets but also to create practical solutions for everyday minor inconveniences. 
-      I enjoy combining problem-solving, programming, and data analysis to turn ideas into actionable results.
-    </p>
-  </div>
-
-  <div class="box" id="achievements">
-    <h2 class="section-title">Achievements & Certifications</h2>
-    <div class="achievements">
-        <h3 class="achievement-title">CodeChum Finalist</h3>
-        <h3 class="achievement-title">Java Certificate</h3>
-        <h3 class="achievement-title">C++ Certificate</h3>
-    </div>
-  </div>
-
-  <div class="box" id="projects">
-    <h2 class="section-title">Previous Projects</h2>
-
-    <div class="projects">
-      <a href="#" class="project-card">
-        <h3 class="project-title">IScreamery</h3>
-        <p class="project-description">
-          A commercial app designed for both admin and customer use, managing orders, points, and rewards for a local ice cream shop.
+  <main class="portfolio-grid">
+    <section class="box hero" id="about">
+      <img src="assets/josef.jpg" alt="Josef Llorente" class="profile-pic">
+      <div class="hero-content">
+        <h1 class="name">Josef Dave R. Llorente</h1>
+        <p class="course">Computer Science • 2nd Year</p>
+        <p class="description">
+          Second-year student at Mapúa Malayan Colleges Mindanao with experience in app and web development.
+          Passionate about finance and quantitative analysis — I combine programming, problem-solving, and data
+          to build practical tools and turn ideas into actionable results.
         </p>
-      </a>
+      </div>
+    </section>
 
-      <a href="#" class="project-card">
-        <h3 class="project-title">KusinApp</h3>
-        <p class="project-description">
-          An AI-integrated app that suggests food recipes and meal recommendations based on ingredient inputs.
-        </p>
-      </a>
+    <section class="box final-project" id="final-project">
+      <h2 class="section-title">Final Project</h2>
+      <article class="featured-project">
+        <div class="featured-info">
+          <span class="badge">HCI Final Project</span>
+          <h3 class="project-title">Archivum: A Centralized Web-Based Student Research Platform</h3>
+          <p class="project-description">
+            Archivum is a web-based system designed to support the complete lifecycle of student research projects —
+            from proposal submission and adviser review to progress monitoring, document archiving, and
+            collaborative oversight across departments.
+          </p>
+          <a href="https://archivum-portal.duckdns.org/" target="_blank" rel="noopener" class="prototype-link">
+            <i class="fas fa-external-link-alt"></i> View Prototype
+          </a>
+        </div>
+        <div class="screenshot-grid">
+          <figure class="screenshot-item">
+            <img src="assets/archivum/landing.png" alt="Archivum landing page" class="screenshot-img" loading="lazy">
+            <figcaption>Landing page</figcaption>
+          </figure>
+          <figure class="screenshot-item">
+            <img src="assets/archivum/login.png" alt="Archivum sign-in page" class="screenshot-img" loading="lazy">
+            <figcaption>Sign-in</figcaption>
+          </figure>
+          <figure class="screenshot-item">
+            <img src="assets/archivum/dashboard.png" alt="Archivum coordinator dashboard" class="screenshot-img" loading="lazy">
+            <figcaption>Dashboard</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
 
-      <a href="#" class="project-card">
-        <h3 class="project-title">JRoute</h3>
-        <p class="project-description">
-          A routing service app for jeepneys in Davao that generates original routes from all 52 official city routes.
-        </p>
-      </a>
+    <section class="box certificates" id="certificates">
+      <h2 class="section-title">Certificates</h2>
 
-      <a href="https://josefllorente.github.io/LlorenteLanding/" class="project-card">
-        <h3 class="project-title">GreenSense</h3>
-        <p class="project-description">
-          A smart insights app for small greenhouse farmers to optimize profitability and reduce waste.
-        </p>
-      </a>
+      <div class="cert-group">
+        <h3 class="cert-group-title">CCIS Innovision 2026</h3>
+        <div class="cert-grid">
+          <a href="assets/certificates/CCIS_InnoVision_2026-EF-CERT-2026-1340122.pdf"
+             target="_blank"
+             rel="noopener"
+             class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">CCIS Innovision Certificate</p>
+              <span class="cert-tag">View PDF</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="https://llorente-midas-ku73maiq6-josefdavellorente-gmailcoms-projects.vercel.app/" class="project-card">
-        <h3 class="project-title">GreenSense</h3>
-        <p class="project-description">
-          Get real-time exchange rates, historical data, and insights into global currencies all in one place.
-        </p>
-      </a>
+      <div class="cert-group">
+        <h3 class="cert-group-title">Coursera</h3>
+        <div class="cert-grid">
+          <a href="assets/certificates/Coursera ICU8ZRRGMZ9I.pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Coursera Certificate</p>
+              <span class="cert-tag">View PDF</span>
+            </div>
+          </a>
+          <a href="assets/certificates/Coursera QV0WAB4L4EDA.pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Coursera Certificate</p>
+              <span class="cert-tag">View PDF</span>
+            </div>
+          </a>
+        </div>
+      </div>
 
-      <a href="https://josefllorente.github.io/LlorenteMachines/" class="project-card">
-        <h3 class="project-title">Machine Problems</h3>
-        <p class="project-description">
-          Two classical machine problems implemented in Javascript.
-        </p>
-      </a>
+      <div class="cert-group">
+        <h3 class="cert-group-title">Seminars, Workshops &amp; Other</h3>
+        <div class="cert-grid">
+          <a href="assets/certificates/LlorenteJosef-16181-A121-IT101-1-ComputerProgrammingConcepts1.pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Computer Programming Concepts 1</p>
+              <span class="cert-tag">IT101</span>
+            </div>
+          </a>
+          <a href="assets/certificates/LlorenteJosef-18270-IT101-2L(A124).pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Computer Programming Concepts 2</p>
+              <span class="cert-tag">IT101-2L</span>
+            </div>
+          </a>
+          <a href="assets/certificates/LlorenteJosef-21581.pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Workshop Certificate</p>
+              <span class="cert-tag">View PDF</span>
+            </div>
+          </a>
+          <a href="assets/certificates/LlorenteJosef.pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Seminar Certificate</p>
+              <span class="cert-tag">View PDF</span>
+            </div>
+          </a>
+          <a href="assets/certificates/LlorenteJosef(1).pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Seminar Certificate</p>
+              <span class="cert-tag">View PDF</span>
+            </div>
+          </a>
+          <a href="assets/certificates/LlorenteJosef(2).pdf" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-preview placeholder">
+              <i class="fas fa-file-pdf"></i>
+              <span>Certificate preview</span>
+            </div>
+            <div class="cert-info">
+              <p class="cert-name">Seminar Certificate</p>
+              <span class="cert-tag">View PDF</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-      <a href="https://buysense.vercel.app/" class="project-card">
-        <h3 class="project-title">BuySense</h3>
-        <p class="project-description">
-          An AI-powered tool that provides real-time buy or sell suggestions for stocks, cryptocurrency, and forex based on live market data and news analysis.
-        </p>
-      </a>
-    </div>
-  </div>
+    <section class="box projects-section" id="projects">
+      <h2 class="section-title">Previous Projects</h2>
+      <div class="projects">
+        <a href="#" class="project-card">
+          <h3 class="project-title">IScreamery</h3>
+          <p class="project-description">
+            Commercial app for admin and customer use — orders, points, and rewards for a local ice cream shop.
+          </p>
+        </a>
+        <a href="#" class="project-card">
+          <h3 class="project-title">KusinApp</h3>
+          <p class="project-description">
+            AI-integrated app that suggests recipes and meal recommendations from ingredient inputs.
+          </p>
+        </a>
+        <a href="#" class="project-card">
+          <h3 class="project-title">JRoute</h3>
+          <p class="project-description">
+            Routing service for Davao jeepneys with routes generated from all 52 official city routes.
+          </p>
+        </a>
+        <a href="https://josefllorente.github.io/LlorenteLanding/" target="_blank" rel="noopener" class="project-card">
+          <h3 class="project-title">GreenSense</h3>
+          <p class="project-description">
+            Smart insights app for small greenhouse farmers to optimize profitability and reduce waste.
+          </p>
+        </a>
+        <a href="https://llorente-midas-ku73maiq6-josefdavellorente-gmailcoms-projects.vercel.app/" target="_blank" rel="noopener" class="project-card">
+          <h3 class="project-title">Midas</h3>
+          <p class="project-description">
+            Real-time exchange rates, historical data, and insights into global currencies in one place.
+          </p>
+        </a>
+        <a href="https://josefllorente.github.io/LlorenteMachines/" target="_blank" rel="noopener" class="project-card">
+          <h3 class="project-title">Machine Problems</h3>
+          <p class="project-description">
+            Two classical machine problems implemented in JavaScript.
+          </p>
+        </a>
+        <a href="https://buysense.vercel.app/" target="_blank" rel="noopener" class="project-card">
+          <h3 class="project-title">BuySense</h3>
+          <p class="project-description">
+            AI-powered buy/sell suggestions for stocks, crypto, and forex from live market data and news.
+          </p>
+        </a>
+      </div>
+    </section>
 
-  <div class="box" id="skills">
+    <section class="box bottom-row" id="skills">
       <h2 class="section-title">Skills</h2>
       <div class="skills">
-          <i class="devicon-cplusplus-plain colored"></i>
-          <i class="devicon-python-plain colored"></i>
-          <i class="devicon-javascript-plain colored"></i>
-          <i class="devicon-typescript-plain colored"></i>
-          <i class="devicon-flutter-plain colored"></i>
-          <i class="devicon-git-plain colored"></i>
+        <i class="devicon-cplusplus-plain colored" title="C++"></i>
+        <i class="devicon-python-plain colored" title="Python"></i>
+        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+        <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+        <i class="devicon-flutter-plain colored" title="Flutter"></i>
+        <i class="devicon-git-plain colored" title="Git"></i>
       </div>
-  </div>
+    </section>
 
+    <section class="box bottom-row" id="socials">
+      <h2 class="section-title">Socials</h2>
+      <div class="socials">
+        <a href="https://github.com/JosefLlorente" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+          <i class="devicon-github-original colored"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/josef-llorente-b40540324/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+          <i class="devicon-linkedin-plain colored"></i>
+        </a>
+        <a href="https://stackoverflow.com/users/31553402/josef-llorente" target="_blank" rel="noopener" class="social-icon" aria-label="Stack Overflow">
+          <i class="devicon-stackoverflow-plain colored"></i>
+        </a>
+      </div>
+    </section>
+  </main>
 
-  <div class="box" id="socials">
-    <h2 class="section-title">Socials</h2>
-    <div class="socials">
-      <a href="https://github.com/JosefLlorente" target="_blank" class="social-icon"><i class="devicon-github-original colored"></i></a>
-      <a href="https://www.linkedin.com/in/josef-llorente-b40540324/" target="_blank" class="social-icon"><i class="devicon-linkedin-plain colored"></i></a>
-      <a href="https://stackoverflow.com/users/31553402/josef-llorente" target="_blank" class="social-icon"><i class="devicon-stackoverflow-plain colored"></i></a>
-    </div>
-  </div>
   <script type="module" src="/src/script.js"></script>
 </body>
 </html>
